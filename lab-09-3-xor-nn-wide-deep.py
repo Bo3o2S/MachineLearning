@@ -33,7 +33,7 @@ train = tf.train.GradientDescentOptimizer(learning_rate=0.1).minimize(cost)
 #Accuracy computation
 #True if hypothesis > 0.5 else False
 predicted = tf.cast(hypothesis>0.5, dtype=tf.float32)
-accuracy = tf.cast(tf.equal(predicted, Y), dtype=tf.float32)
+accuracy = tf.reduce_mean(tf.cast(tf.equal(predicted, Y), dtype=tf.float32))
 
 #Launch graph
 with tf.Session() as sess:
